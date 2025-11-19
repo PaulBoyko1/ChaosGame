@@ -30,8 +30,8 @@ int main()
 		font.loadFromFile("Roboto-VariableFont_wdth,wght.ttf");
 		text.setFont(font);
 		text.setString("Select 3 points as the vertices of the triangle and a 4th as the starting point for the ChaosGame");
-		text.setCharacterSize(30);
-		text.setFillColor(Color::Green);
+		text.setCharacterSize(35);
+		text.setFillColor(Color(0, 0, 139));
 		
 		
 		
@@ -106,11 +106,16 @@ int main()
 		    rect.setFillColor(Color::Blue);
 		    window.draw(rect);
 		}
-		///TODO:  Draw points
+		///TODO:  Draw 
+		
 		for (int i = 0; i < points.size(); i++) {
+			int r = rand() % 256;
+			int g = rand() % 256;
+			int b = rand() % 256;
 			CircleShape tinyCircle(2);
+
 			tinyCircle.setPosition(points[i]);
-			tinyCircle.setFillColor(Color::Blue);
+			tinyCircle.setFillColor(Color(r, g, b));
 			window.draw(tinyCircle);
 		}
 		window.draw(text);
