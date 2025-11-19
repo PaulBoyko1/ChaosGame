@@ -27,7 +27,7 @@ int main()
 		
 		sf::Font font;
 		sf::Text text;
-		font.loadFromFile("arial.ttf");
+		font.loadFromFile("Roboto-VariableFont_wdth,wght.ttf");
 		text.setFont(font);
 		text.setString("Select 3 points as the vertices of the triangle and a 4th as the starting point for the ChaosGame");
 
