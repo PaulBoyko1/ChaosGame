@@ -1,4 +1,7 @@
 // Include important C++ libraries here
+#include <Font.hpp>
+#include <Text.hpp>
+#include <CircleShape.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
@@ -15,12 +18,22 @@ int main()
 	VideoMode vm(1920, 1080);
 	// Create and open a window for the game
 	RenderWindow window(vm, "Chaos Game!!", Style::Default);
-	
+
 	vector<Vector2f> vertices;
 	vector<Vector2f> points;
 
 	while (window.isOpen())
 	{
+		
+		sf::Font font;
+		sf::Text text;
+		font.loadFromFile("arial.ttf");
+		text.setFont(font);
+		text.setString("Select 3 points as the vertices of the triangle and a 4th as the starting point for the ChaosGame");
+
+		
+		
+		
 		/*
 		****************************************
 		Handle the players input
@@ -48,8 +61,7 @@ int main()
 			    }
 			    else if(points.size() == 0)
 			    {
-				///fourth click ab
-				///push back to points vector
+					
 			    }
 			}
 		    }
