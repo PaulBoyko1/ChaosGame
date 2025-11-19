@@ -1,7 +1,7 @@
 // Include important C++ libraries here
-#include <Font.hpp>
-#include <Text.hpp>
-#include <CircleShape.hpp>
+//#include <Font.hpp>
+//#include <Text.hpp>  //NOT NEEDED, included in Graphics.hpp
+//#include <CircleShape.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
@@ -25,11 +25,11 @@ int main()
 	while (window.isOpen())
 	{
 		
-		sf::Font font;
-		sf::Text text;
-		font.loadFromFile("Roboto-VariableFont_wdth,wght.ttf");
-		text.setFont(font);
-		text.setString("Select 3 points as the vertices of the triangle and a 4th as the starting point for the ChaosGame");
+		//Font font;
+		//Text text;
+		//font.loadFromFile("Roboto-VariableFont_wdth,wght.ttf");
+		//text.setFont(font);
+		//text.setString("Select 3 points as the vertices of the triangle and a 4th as the starting point for the ChaosGame");
 
 		
 		
@@ -61,7 +61,7 @@ int main()
 			    }
 			    else if(points.size() == 0)
 			    {
-					
+					points.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
 			    }
 			}
 		    }
@@ -78,6 +78,14 @@ int main()
 	
 		if(points.size() > 0)
 		{
+			for(int i = 0; i < 8; i++) {
+				
+				int random = rand() % 3;
+				Vector2f lastPoint = points.back();
+				Vector2f v = vertices[random];
+
+				points.push_back(Vector2f((lastPoint.x + v.x) / 2, (lastPoint.y + v.y) / 2));
+			}
 		    ///generate more point(s)
 		    ///select random vertex
 		    ///calculate midpoint between random vertex and the last point in the vector
@@ -98,6 +106,11 @@ int main()
 		    window.draw(rect);
 		}
 		///TODO:  Draw points
+		for (int i = 0; i < points.size(); i++) {
+			CircleShape tinyCircle(2);
+			tinyCircle.setPosition(points[i]);
+			tinyCircle.setFillColor(Color::Blue);
+		}
 		window.display();
 	}
 }
