@@ -25,12 +25,13 @@ int main()
 	while (window.isOpen())
 	{
 		
-		//Font font;
-		//Text text;
-		//font.loadFromFile("Roboto-VariableFont_wdth,wght.ttf");
-		//text.setFont(font);
-		//text.setString("Select 3 points as the vertices of the triangle and a 4th as the starting point for the ChaosGame");
-
+		Font font;
+		Text text;
+		font.loadFromFile("Roboto-VariableFont_wdth,wght.ttf");
+		text.setFont(font);
+		text.setString("Select 3 points as the vertices of the triangle and a 4th as the starting point for the ChaosGame");
+		text.setCharacterSize(30);
+		text.setFillColor(Color::Green);
 		
 		
 		
@@ -78,7 +79,7 @@ int main()
 	
 		if(points.size() > 0)
 		{
-			for(int i = 0; i < 8; i++) {
+			for(int i = 0; i < 100; i++) {
 				
 				int random = rand() % 3;
 				Vector2f lastPoint = points.back();
@@ -110,7 +111,9 @@ int main()
 			CircleShape tinyCircle(2);
 			tinyCircle.setPosition(points[i]);
 			tinyCircle.setFillColor(Color::Blue);
+			window.draw(tinyCircle);
 		}
+		window.draw(text);
 		window.display();
 	}
 }
